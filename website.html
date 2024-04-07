@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquaponics IoT Monitoring System</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            text-align: left;
+            margin-left: 20px;
+        }
+
+        header p {
+            text-align: left;
+            margin-left: 20px;
+            font-style: italic;
+            color: #888;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px 20;
+            text-align: left;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .content {
+            background-color: #5d576b;
+            height: 1000px;
+
+        }
+
+        .sensor-section {
+            background-color: rgba(0, 0, 0, 0.5); 
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 300px;
+            width: 80%;
+            position: absolute;
+            top: 50%;
+            left: 65%;
+            transform: translate(-50%, -50%);
+        }
+
+        .sensor-section.left {
+            top: 35%;
+            left: 15%;
+            transform: translateY(-50%);
+        }
+
+        .sensor-section.right {
+            top: 35%;
+            right: 15%;
+            transform: translateY(-50%);
+        }
+
+        #temperatureValue {
+            font-size: 18px;
+            color: tomato;
+        }
+
+        #output {
+            font-size: 18px;
+            color: powderblue;
+        }
+
+        #pH {
+            max-width: 40%;
+            position: absolute;
+            top: 45%;
+            left: 75.5%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            border-style: solid;
+        }
+
+        #temperature {
+            max-width: 30%;
+            position: absolute;
+            top: 45%;
+            left: 25.5%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+            border-style: solid;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Aquaponics IoT Monitoring System</h1>
+    <p>Group Technology</p>
+</header>
+
+<div class="content">
+    <!-- Temperature Sensor -->
+    <div class="sensor-section left" id="temperatureSensor">
+        <h2>Temperature Sensor</h2>
+        <p>Temperature: <span id="temperatureValue">Loading...</span></p>
+    </div>
+
+    <!-- pH Sensor -->
+    <div class="sensor-section right" id="phSensor">
+        <h2>pH Sensor</h2>
+        <p>pH Level: <span id="output">Loading...</span></p>
+    </div>
+    <img id="pH" src="ph.webp" alt="pH Scale">
+    <img id="temperature" src="temperature.png" alt="Temperature Scale">
+</div>
+
+<footer>
+    <p><var>Members: A, C, D, J, M, S, T.</var></p>
+</footer>
+
+<script>
+		setInterval(() => {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'output.txt', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    const array = xhr.responseText.split(" ");
+                    document.getElementById('output').textContent = array[0] + " pH";
+                    document.getElementById('temperatureValue').textContent = array[1] + "°C";
+                }
+            };
+            xhr.send();
+        }, 10)
+</script>
+
+</body>
+</html>
