@@ -8,7 +8,6 @@ DallasTemperature sensors(&oneWire);
 const int pH_pin = A0;
 
 void setup() {
-  Serial.print("Starting...");
   Serial.begin(9600);
   sensors.begin();
 }
