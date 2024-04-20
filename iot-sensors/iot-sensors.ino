@@ -8,6 +8,7 @@ DallasTemperature sensors(&oneWire);
 const int pH_pin = A0;
 
 void setup() {
+  Serial.print("Starting...");
   Serial.begin(9600);
   sensors.begin();
 }
@@ -16,23 +17,10 @@ void loop() {
   sensors.requestTemperatures();
   float tempC = sensors.getTempCByIndex(0);
 
-  int rawValue = analogRead(pH_pin);
-  
-  float pH_value = analogToPH(rawValue);
-  
-  //Serial.print("pH value: ");
-  if(tempC != DEVICE_DISCONNECTED_C) 
-  {
-    //Serial.print("Temperature: ");
-    Serial.print(pH_value);
-    Serial.print(" ");
-    Serial.print(tempC);
-  } 
-  else
-  {
-    Serial.println("Undefined");
-  }
-  delay(1000); 
+  Serial.print(analogToPH(analogRead(pH_pin)));
+  Serial.print(" ");
+  Serial.println(tempC);
+  delay(1000);
 }
 
 float analogToPH(int raw) {
