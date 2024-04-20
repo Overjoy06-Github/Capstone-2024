@@ -2,7 +2,7 @@
 
 ## Project Overview:
 
-The Smart Aquaponics System is a capstone project designed to integrate IoT (Internet of Things) sensors for monitoring crucial parameters like pH levels and temperature in an aquaponics setup. The system aims to provide real-time data insights to enhance the efficiency and productivity of aquaponics farming.
+The Smart Aquaponics System is a capstone project designed to integrate IoT (Internet of Things) sensors for monitoring pH levels and temperature in an aquaponics setup. The system aims to provide real-time data insights to enhance the efficiency and productivity of aquaponics farming.
 
 ## Setup and Execution Instructions:
 1. Open iot-sensors.ino in the Arduino IDE.
