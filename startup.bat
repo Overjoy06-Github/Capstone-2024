@@ -1,3 +1,3 @@
-start chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security file://C:\Users\user\Desktop\Capstone\capstone/website.html
+start chrome.exe --user-data-dir="C://Chrome dev session" --disable-web-security file://%~dp0website.html
 
-pythonw output.py
+python output.py
